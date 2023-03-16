@@ -1,9 +1,7 @@
 package com.rezaalamsyah.animenia.ui
 
 import android.os.Bundle
-import android.util.Log
 import androidx.core.os.bundleOf
-import androidx.navigation.fragment.NavHostFragment
 import com.rezaalamsyah.animenia.R
 import com.rezaalamsyah.animenia.databinding.ActivityMainBinding
 import com.rezaalamsyah.core.domain.model.Anime

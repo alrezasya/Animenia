@@ -6,10 +6,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.google.android.play.core.splitinstall.SplitInstallManagerFactory
+import com.google.android.play.core.splitinstall.SplitInstallRequest
 import com.rezaalamsyah.animenia.R
 import com.rezaalamsyah.animenia.databinding.FragmentHomeBinding
 import com.rezaalamsyah.core.data.utils.Resource
@@ -17,6 +20,7 @@ import com.rezaalamsyah.core.ui.adapter.AnimeAdapter
 import com.rezaalamsyah.core.ui.base.BaseFragment
 import com.rezaalamsyah.core.utils.Variables
 import com.rezaalamsyah.core.utils.gone
+import com.rezaalamsyah.core.utils.installModule
 import com.rezaalamsyah.core.utils.visible
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -36,6 +40,11 @@ class HomeFragment : BaseFragment() {
         return binding.root
     }
 
+    private fun goToFav() {
+        val uri = Uri.parse("animenia://favorite")
+        startActivity(Intent(Intent.ACTION_VIEW, uri))
+    }
+
     override fun onSetView() {
         super.onSetView()
         setAdapter()
@@ -46,9 +55,11 @@ class HomeFragment : BaseFragment() {
             menu = R.menu.main_menu,
             onMenuAction = {
                 if (it == R.id.nav_fav) {
-                    val uri = Uri.parse("animenia://favorite")
-                    startActivity(Intent(Intent.ACTION_VIEW, uri))
-
+                    requireContext().installModule("favorite",
+                    onSuccess = {
+                        goToFav()
+                    },
+                    onFailure = {})
                 } else {
                     hostController.popBackStack()
                 }
