@@ -3,7 +3,6 @@ package com.rezaalamsyah.core.ui.base
 import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
-import javax.inject.Inject
 
 class NavDelegation: NavDelegate {
     private lateinit var nav: NavController
