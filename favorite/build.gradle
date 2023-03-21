@@ -1,8 +1,8 @@
 plugins {
     id 'com.android.dynamic-feature'
     id 'kotlin-android'
-    id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
+    id 'kotlin-kapt'
 }
 
 apply from: '../shared_dependencies.gradle'
@@ -36,9 +36,26 @@ android {
     buildFeatures {
         viewBinding true
     }
+    lintOptions {
+        disable 'TypographyFractions','TypographyQuotes'
+        enable 'RtlHardcoded','RtlCompat', 'RtlEnabled'
+        checkOnly 'NewApi', 'InlinedApi'
+        quiet true
+        abortOnError false
+        ignoreWarnings true
+        baseline file("lint-baseline.xml")
+    }
+    hilt {
+        enableAggregatingTask = true
+        enableExperimentalClasspathAggregation = true
+    }
 }
 
 dependencies {
     implementation project(":app")
     implementation project(":core")
+}
+
+kapt {
+    correctErrorTypes true
 }

@@ -14,9 +14,11 @@ import com.rezaalamsyah.core.utils.gone
 import com.rezaalamsyah.core.utils.visible
 import com.rezaalamsyah.favorite.R
 import com.rezaalamsyah.favorite.databinding.ActivityFavoriteBinding
+import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.EntryPointAccessors
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class FavoriteActivity: BaseActivity() {
 
     private lateinit var binding: ActivityFavoriteBinding

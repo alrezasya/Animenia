@@ -8,19 +8,19 @@ import com.rezaalamsyah.core.data.utils.Resource
 import com.rezaalamsyah.core.data.utils.ResponseState
 import com.rezaalamsyah.core.domain.model.Anime
 import com.rezaalamsyah.core.domain.repository.IAnimeRepository
-import com.rezaalamsyah.core.utils.AppExecutors
 import com.rezaalamsyah.core.utils.DataMapper
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
 class AnimeRepository @Inject constructor(
     private val remoteDataSource: RemoteDataSource,
-    private val localDataSource: LocalDataSource,
-    private val appExecutors: AppExecutors
-) : IAnimeRepository {
+    private val localDataSource: LocalDataSource) : IAnimeRepository {
 
     override fun getAnimeList(): Flow<Resource<List<Anime>>> =
         object : NetworkBoundResource<List<Anime>, List<AnimeResponse>>() {
@@ -37,7 +37,7 @@ class AnimeRepository @Inject constructor(
 
             override suspend fun saveCallResult(data: List<AnimeResponse>) {
                 val list = DataMapper.responsesToEntities(data)
-                localDataSource.insertAnimelList(list)
+                localDataSource.insertAnimeList(list)
             }
         }.asFlow()
 
@@ -47,8 +47,12 @@ class AnimeRepository @Inject constructor(
         }
     }
 
-    override fun setFavoritedAnime(anime: Anime, state: Boolean) {
+    override suspend fun setFavoritedAnime(anime: Anime, state: Boolean) {
         val entity = DataMapper.domainToEntity(anime)
-        appExecutors.diskIO().execute { localDataSource.setFavoritedAnime(entity, state) }
+        coroutineScope {
+            launch(Dispatchers.IO) {
+                localDataSource.setFavoritedAnime(entity, state)
+            }
+        }
     }
 }

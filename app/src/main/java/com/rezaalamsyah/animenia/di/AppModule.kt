@@ -1,7 +1,9 @@
+@file:Suppress("unused")
+
 package com.rezaalamsyah.animenia.di
 
 import com.rezaalamsyah.core.domain.usecase.AnimeInteractor
-import com.rezaalamsyah.core.domain.usecase.AnimeUsecase
+import com.rezaalamsyah.core.domain.usecase.AnimeUseCase
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -14,6 +16,6 @@ abstract class AppModule {
 
     @Binds
     @Singleton
-    abstract fun provideAnimeUseCase(interactor: AnimeInteractor): AnimeUsecase
+    abstract fun provideAnimeUseCase(interactor: AnimeInteractor): AnimeUseCase
 
 }

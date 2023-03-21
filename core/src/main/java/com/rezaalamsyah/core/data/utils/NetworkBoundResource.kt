@@ -1,3 +1,5 @@
+@file:Suppress("RemoveExplicitTypeArguments")
+
 package com.rezaalamsyah.core.data.utils
 
 import kotlinx.coroutines.flow.*

@@ -51,7 +51,7 @@
                 android:paddingHorizontal="@dimen/dimen_8dp"
                 android:id="@+id/tv_title"
                 android:textStyle="bold"
-                tools:text="Shingeki No Kyojingdfgdfgdfgddfghff"
+                tools:text="Sample"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_dimen_16sp"
                 android:singleLine="true"

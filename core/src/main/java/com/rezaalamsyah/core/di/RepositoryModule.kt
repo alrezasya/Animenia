@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package com.rezaalamsyah.core.di
 
 import com.rezaalamsyah.core.data.repository.AnimeRepository

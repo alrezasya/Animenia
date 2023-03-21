@@ -10,6 +10,6 @@ interface IAnimeRepository {
 
     fun getFavoritedAnime(): Flow<List<Anime>>
 
-    fun setFavoritedAnime(anime: Anime, state: Boolean)
+    suspend fun setFavoritedAnime(anime: Anime, state: Boolean)
 
 }

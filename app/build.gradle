@@ -2,8 +2,8 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-parcelize'
-    id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
+    id 'kotlin-kapt'
 }
 
 apply from: '../shared_dependencies.gradle'
@@ -38,8 +38,25 @@ android {
         viewBinding true
     }
     dynamicFeatures = [':favorite']
+
+    lintOptions {
+        disable 'TypographyFractions','TypographyQuotes'
+        enable 'RtlHardcoded','RtlCompat', 'RtlEnabled'
+        checkOnly 'NewApi', 'InlinedApi'
+        quiet true
+        abortOnError false
+        ignoreWarnings true
+        baseline file("lint-baseline.xml")
+    }
+    hilt {
+        enableAggregatingTask = true
+    }
 }
 
 dependencies {
     implementation project(":core")
+}
+
+kapt {
+    correctErrorTypes true
 }

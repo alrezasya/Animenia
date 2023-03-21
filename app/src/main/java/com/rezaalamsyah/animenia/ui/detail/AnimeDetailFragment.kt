@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.rezaalamsyah.animenia.R
 import com.rezaalamsyah.animenia.databinding.FragmentAnimeDetailBinding
@@ -14,6 +15,7 @@ import com.rezaalamsyah.core.domain.model.Anime
 import com.rezaalamsyah.core.ui.base.BaseFragment
 import com.rezaalamsyah.core.utils.Variables
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class AnimeDetailFragment : BaseFragment() {
@@ -94,7 +96,9 @@ class AnimeDetailFragment : BaseFragment() {
         binding.apply {
             btnFav.setOnClickListener {
                 statusFavorite = !statusFavorite
-                animeData?.let { it1 -> viewModel.setFavoriteAnime(it1, statusFavorite) }
+                lifecycleScope.launch {
+                    animeData?.let { it1 -> viewModel.setFavoriteAnime(it1, statusFavorite) }
+                }
                 setFavorite(statusFavorite)
             }
         }

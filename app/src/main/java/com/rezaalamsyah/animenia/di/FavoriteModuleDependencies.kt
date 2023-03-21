@@ -1,6 +1,6 @@
 package com.rezaalamsyah.animenia.di
 
-import com.rezaalamsyah.core.domain.usecase.AnimeUsecase
+import com.rezaalamsyah.core.domain.usecase.AnimeUseCase
 import dagger.hilt.EntryPoint
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
@@ -9,5 +9,5 @@ import dagger.hilt.components.SingletonComponent
 @InstallIn(SingletonComponent::class)
 interface FavoriteModuleDependencies {
 
-    fun useCase(): AnimeUsecase
+    fun useCase(): AnimeUseCase
 }

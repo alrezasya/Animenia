@@ -12,7 +12,7 @@ abstract class BaseActivity : AppCompatActivity(), IBaseView, IActivityView, Nav
 
     private var menuId: Int? = null
     private var menuListener: ((Int) -> Boolean)? = null
-    var hostId: Int? = null
+    private var hostId: Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)

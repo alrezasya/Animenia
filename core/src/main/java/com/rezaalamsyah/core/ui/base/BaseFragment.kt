@@ -10,7 +10,7 @@ import androidx.navigation.fragment.findNavController
 
 abstract class BaseFragment : Fragment(), NavDelegate by NavDelegation(), IBaseView {
 
-    lateinit var currentActivity: BaseActivity
+    private lateinit var currentActivity: BaseActivity
 
     val hostController by lazy { currentActivity.getController() }
 

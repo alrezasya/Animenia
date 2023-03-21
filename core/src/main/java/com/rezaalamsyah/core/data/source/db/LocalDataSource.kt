@@ -13,7 +13,7 @@ class LocalDataSource @Inject constructor(private val animeDao: AnimeDao) {
 
     fun getFavoritedAnime(): Flow<List<AnimeEntity>> = animeDao.getFavoriteAnime()
 
-    suspend fun insertAnimelList(animeList: List<AnimeEntity>) = animeDao.insertAnimeList(animeList)
+    suspend fun insertAnimeList(animeList: List<AnimeEntity>) = animeDao.insertAnimeList(animeList)
 
     fun setFavoritedAnime(anime: AnimeEntity, newState: Boolean) {
         anime.isFavorite = newState
