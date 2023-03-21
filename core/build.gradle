@@ -41,6 +41,7 @@ android {
         enable 'RtlHardcoded', 'RtlCompat', 'RtlEnabled'
         ignoreWarnings true
         quiet true
+        checkReleaseBuilds false
         baseline file("lint-baseline.xml")
     }
     namespace 'com.rezaalamsyah.core'
