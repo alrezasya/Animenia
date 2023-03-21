@@ -1,27 +1,20 @@
 package com.rezaalamsyah.core.di
 
-import android.content.Context
 import androidx.room.Room
 import com.rezaalamsyah.core.data.source.db.room.AnimeDb
-import com.rezaalamsyah.core.data.source.db.room.dao.AnimeDao
-import dagger.Module
-import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.android.qualifiers.ApplicationContext
-import dagger.hilt.components.SingletonComponent
-import javax.inject.Singleton
+import org.koin.android.ext.koin.androidContext
+import org.koin.dsl.module
 
-@Module
-@InstallIn(SingletonComponent::class)
-class DbModule {
-
-    @Singleton
-    @Provides
-    fun provideDatabase(@ApplicationContext context: Context): AnimeDb = Room.databaseBuilder(
-        context,
-        AnimeDb::class.java, "AnimeniaDb.db"
-    ).fallbackToDestructiveMigration().build()
-
-    @Provides
-    fun provideAnimeDao(database: AnimeDb): AnimeDao = database.animeDao()
+val databaseModule = module {
+    factory { get<AnimeDb>().animeDao() }
+    single {
+//        val passPhrase: ByteArray = getBytes("animenia".toCharArray())
+//        val factory = SupportFactory(passPhrase)
+        Room.databaseBuilder(
+            androidContext(),
+            AnimeDb::class.java, "AnimeniaDatabase.db"
+        ).fallbackToDestructiveMigration()
+//            .openHelperFactory(factory)
+            .build()
+    }
 }

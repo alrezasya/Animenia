@@ -7,9 +7,7 @@ import com.rezaalamsyah.animenia.databinding.ActivityMainBinding
 import com.rezaalamsyah.core.domain.model.Anime
 import com.rezaalamsyah.core.ui.base.BaseActivity
 import com.rezaalamsyah.core.utils.Variables
-import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
 class MainActivity : BaseActivity() {
 
     private lateinit var binding: ActivityMainBinding
@@ -33,7 +31,7 @@ class MainActivity : BaseActivity() {
         val bundle = bundleOf()
         if (toDetail) {
             bundle.putParcelable(Variables.ANIME_DATA_KEY, data)
-            bundle.putBoolean(Variables.TO_DETAIL_KEY, toDetail)
+            bundle.putBoolean(Variables.TO_DETAIL_KEY, true)
             graph.startDestination = R.id.animeDetailFragment
         } else {
             graph.startDestination = R.id.homeFragment

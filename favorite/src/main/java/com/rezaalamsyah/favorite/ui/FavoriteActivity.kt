@@ -3,10 +3,8 @@ package com.rezaalamsyah.favorite.ui
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import com.rezaalamsyah.animenia.di.FavoriteModuleDependencies
 import com.rezaalamsyah.core.ui.adapter.AnimeAdapter
 import com.rezaalamsyah.core.ui.base.BaseActivity
 import com.rezaalamsyah.core.utils.Variables
@@ -14,36 +12,24 @@ import com.rezaalamsyah.core.utils.gone
 import com.rezaalamsyah.core.utils.visible
 import com.rezaalamsyah.favorite.R
 import com.rezaalamsyah.favorite.databinding.ActivityFavoriteBinding
-import dagger.hilt.android.EntryPointAccessors
-import javax.inject.Inject
+import com.rezaalamsyah.favorite.di.favModule
+import org.koin.core.context.loadKoinModules
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class FavoriteActivity: BaseActivity() {
 
     private lateinit var binding: ActivityFavoriteBinding
 
-    @Inject
-    lateinit var factory: ViewModelFactory
-
-    private val viewModel: FavoriteViewModel by viewModels {
-        factory
-    }
+    private val viewModel: FavoriteViewModel by viewModel()
 
     private val animeAdapter = AnimeAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        DaggerFavoriteComponent.builder()
-            .context(this)
-            .appDependencies(
-                EntryPointAccessors.fromApplication(
-                    applicationContext,
-                    FavoriteModuleDependencies::class.java
-                )
-            )
-            .build()
-            .inject(this)
         super.onCreate(savedInstanceState)
         binding = ActivityFavoriteBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        loadKoinModules(favModule)
+
         onSetView()
         onSetAction()
         onSetObserver()

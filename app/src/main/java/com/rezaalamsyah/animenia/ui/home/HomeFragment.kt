@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
-import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.rezaalamsyah.animenia.R
@@ -19,12 +18,11 @@ import com.rezaalamsyah.core.utils.Variables
 import com.rezaalamsyah.core.utils.gone
 import com.rezaalamsyah.core.utils.installModule
 import com.rezaalamsyah.core.utils.visible
-import dagger.hilt.android.AndroidEntryPoint
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-@AndroidEntryPoint
 class HomeFragment : BaseFragment() {
 
-    private val viewModel: HomeViewModel by viewModels()
+    private val viewModel: HomeViewModel by viewModel()
     private val animeAdapter = AnimeAdapter()
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!

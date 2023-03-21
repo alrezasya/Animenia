@@ -7,7 +7,6 @@ dependencies {
     androidTestImplementation "androidx.test.ext:junit:$androidx_junit_version"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
     implementation "androidx.multidex:multidex:$multidex_version"
-    kapt "org.jetbrains.kotlinx:kotlinx-metadata-jvm:$jvm_metadata_version"
     implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
 
     implementation "androidx.cardview:cardview:$cardview_version"
@@ -15,12 +14,9 @@ dependencies {
     implementation "com.google.android.material:material:$material_version"
     implementation "com.github.bumptech.glide:glide:$glide_version"
 
-    //dagger
-    implementation "com.google.dagger:hilt-android:$hilt_version"
-    kaptTest "com.google.dagger:hilt-compiler:$hilt_version"
-    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
-    kapt "androidx.hilt:hilt-compiler:$hilt_jetpack_version"
-    kaptAndroidTest "androidx.hilt:hilt-compiler:$hilt_jetpack_version"
+    //koin
+    implementation "io.insert-koin:koin-core:$koin_version"
+    implementation "io.insert-koin:koin-android:$koin_version"
 
     // Kotlin Nav Component
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"

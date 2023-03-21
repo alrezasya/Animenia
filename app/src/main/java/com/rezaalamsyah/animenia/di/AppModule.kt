@@ -1,21 +1,17 @@
-@file:Suppress("unused")
-
 package com.rezaalamsyah.animenia.di
 
+import com.rezaalamsyah.animenia.ui.detail.AnimeDetailViewModel
+import com.rezaalamsyah.animenia.ui.home.HomeViewModel
 import com.rezaalamsyah.core.domain.usecase.AnimeInteractor
 import com.rezaalamsyah.core.domain.usecase.AnimeUseCase
-import dagger.Binds
-import dagger.Module
-import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
-import javax.inject.Singleton
+import org.koin.androidx.viewmodel.dsl.viewModel
+import org.koin.dsl.module
 
-@Module
-@InstallIn(SingletonComponent::class)
-abstract class AppModule {
+val useCaseModule = module {
+    factory<AnimeUseCase> { AnimeInteractor(get()) }
+}
 
-    @Binds
-    @Singleton
-    abstract fun provideAnimeUseCase(interactor: AnimeInteractor): AnimeUseCase
-
+val viewModelModule = module {
+    viewModel { HomeViewModel(get()) }
+    viewModel { AnimeDetailViewModel(get()) }
 }

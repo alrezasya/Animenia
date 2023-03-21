@@ -14,11 +14,8 @@ import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
-import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
-class AnimeRepository @Inject constructor(
+class AnimeRepository(
     private val remoteDataSource: RemoteDataSource,
     private val localDataSource: LocalDataSource) : IAnimeRepository {
 

@@ -2,9 +2,8 @@ package com.rezaalamsyah.core.domain.usecase
 
 import com.rezaalamsyah.core.domain.model.Anime
 import com.rezaalamsyah.core.domain.repository.IAnimeRepository
-import javax.inject.Inject
 
-class AnimeInteractor @Inject constructor(private val animeRepository: IAnimeRepository): AnimeUseCase {
+class AnimeInteractor(private val animeRepository: IAnimeRepository): AnimeUseCase {
 
     override fun getAnimeList() = animeRepository.getAnimeList()
 

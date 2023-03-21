@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.res.ResourcesCompat
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.rezaalamsyah.animenia.R
@@ -14,17 +13,16 @@ import com.rezaalamsyah.animenia.databinding.FragmentAnimeDetailBinding
 import com.rezaalamsyah.core.domain.model.Anime
 import com.rezaalamsyah.core.ui.base.BaseFragment
 import com.rezaalamsyah.core.utils.Variables
-import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-@AndroidEntryPoint
 class AnimeDetailFragment : BaseFragment() {
 
     private var _binding: FragmentAnimeDetailBinding? = null
     private val binding get() = _binding!!
     private var animeData: Anime? = null
     private var isFromFav: Boolean? = null
-    private val viewModel: AnimeDetailViewModel by viewModels()
+    private val viewModel: AnimeDetailViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
