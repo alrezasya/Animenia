@@ -38,16 +38,17 @@ android {
         viewBinding true
     }
     dynamicFeatures = [':favorite']
-
-    lintOptions {
-        disable 'TypographyFractions','TypographyQuotes'
-        enable 'RtlHardcoded','RtlCompat', 'RtlEnabled'
-        checkOnly 'NewApi', 'InlinedApi'
-        quiet true
+    lint {
         abortOnError false
+        baseline file('lint-baseline.xml')
+        checkOnly 'NewApi', 'InlinedApi'
+        disable 'TypographyFractions', 'TypographyQuotes'
+        enable 'RtlHardcoded', 'RtlCompat', 'RtlEnabled'
         ignoreWarnings true
-        baseline file("lint-baseline.xml")
+        quiet true
     }
+    namespace 'com.rezaalamsyah.animenia'
+
 }
 
 dependencies {
