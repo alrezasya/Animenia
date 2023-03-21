@@ -42,11 +42,12 @@ android {
         quiet true
         abortOnError false
         ignoreWarnings true
-        baseline file("lint-baseline.xml")
     }
 }
 
 dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     //room
     api "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"

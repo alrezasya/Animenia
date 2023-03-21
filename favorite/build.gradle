@@ -43,7 +43,6 @@ android {
         quiet true
         abortOnError false
         ignoreWarnings true
-        baseline file("lint-baseline.xml")
     }
     hilt {
         enableAggregatingTask = true
@@ -54,6 +53,8 @@ android {
 dependencies {
     implementation project(":app")
     implementation project(":core")
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 }
 
 kapt {
