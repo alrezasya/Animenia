@@ -46,6 +46,7 @@ android {
         enable 'RtlHardcoded', 'RtlCompat', 'RtlEnabled'
         ignoreWarnings true
         quiet true
+        baseline file("lint-baseline.xml")
     }
     namespace 'com.rezaalamsyah.animenia'
 
