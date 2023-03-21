@@ -37,6 +37,8 @@ buildscript {
         nav_version = '2.3.0'
         sqlite_chiper_version = '4.4.0'
         sqlite_version = '2.3.0'
+
+        leak_canary_version = '2.10'
     }
 }
 

@@ -49,6 +49,7 @@ dependencies {
     implementation project(":app")
     implementation project(":core")
     implementation fileTree(dir: "libs", include: ["*.jar"])
+    debugImplementation "com.squareup.leakcanary:leakcanary-android:$leak_canary_version"
 }
 
 kapt {
