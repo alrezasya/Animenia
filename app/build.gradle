@@ -8,9 +8,9 @@ plugins {
 apply from: '../shared_dependencies.gradle'
 
 android {
+    namespace 'com.rezaalamsyah.animenia'
     compileSdk 32
     defaultConfig {
-        namespace 'com.rezaalamsyah.animenia'
         applicationId "com.rezaalamsyah.animenia"
         minSdk 21
         targetSdk 32
@@ -23,7 +23,11 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -49,8 +53,6 @@ android {
         checkReleaseBuilds false
         baseline file("lint-baseline.xml")
     }
-    namespace 'com.rezaalamsyah.animenia'
-
 }
 
 dependencies {

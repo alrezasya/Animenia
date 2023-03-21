@@ -7,20 +7,13 @@ plugins {
 apply from: '../shared_dependencies.gradle'
 
 android {
+    namespace 'com.rezaalamsyah.favorite'
     compileSdk 32
     defaultConfig {
-        namespace 'com.rezaalamsyah.favorite'
         minSdk 21
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -42,7 +35,6 @@ android {
         checkReleaseBuilds false
         baseline file("lint-baseline.xml")
     }
-    namespace 'com.rezaalamsyah.favorite'
 }
 
 dependencies {
