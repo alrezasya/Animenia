@@ -6,14 +6,16 @@ import android.widget.Toast
 import com.google.android.play.core.splitinstall.SplitInstallManagerFactory
 import com.google.android.play.core.splitinstall.SplitInstallRequest
 
+@Suppress("unused")
 fun View.visible() {
     this.visibility = View.VISIBLE
 }
-
+@Suppress("unused")
 fun View.gone() {
     this.visibility = View.GONE
 }
 
+@Suppress("unused")
 fun Context.installModule(
     moduleName: String,
     onSuccess: () -> Unit,

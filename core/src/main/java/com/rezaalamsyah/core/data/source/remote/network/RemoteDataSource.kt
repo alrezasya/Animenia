@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 
-class RemoteDataSource (private val apiClient: ApiClient) {
+class RemoteDataSource (@Suppress("unused") private val apiClient: ApiClient) {
     suspend fun getAnimeList(): Flow<ResponseState<List<AnimeResponse>?>> {
         return flow {
             try {

@@ -4,13 +4,14 @@ import com.rezaalamsyah.core.domain.model.AnimeImage
 import com.rezaalamsyah.core.domain.model.ImageDetail
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
-
+@Suppress("unused")
 @JsonClass(generateAdapter = true)
 data class ListAnimeResponse(
     @Json(name = "data")
     val listData: List<AnimeResponse>? = null
 )
 
+@Suppress("unused")
 @JsonClass(generateAdapter = true)
 data class AnimeResponse(
     @Json(name ="mal_id")
@@ -54,6 +55,7 @@ data class AnimeResponse(
 
 )
 
+@Suppress("unused")
 @JsonClass(generateAdapter = true)
 data class AnimeImageData(
     @Json(name ="jpg")
@@ -70,6 +72,7 @@ data class AnimeImageData(
     }
 }
 
+@Suppress("unused")
 @JsonClass(generateAdapter = true)
 data class ImageDetailData(
     @Json(name ="image_url")

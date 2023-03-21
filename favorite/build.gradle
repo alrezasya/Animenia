@@ -9,6 +9,7 @@ apply from: '../shared_dependencies.gradle'
 android {
     compileSdk 32
     defaultConfig {
+        namespace 'com.rezaalamsyah.favorite'
         applicationId "com.rezaalamsyah.favorite"
         minSdk 21
         targetSdk 32
@@ -42,6 +43,7 @@ android {
         quiet true
         abortOnError false
         ignoreWarnings true
+        baseline file("lint-baseline.xml")
     }
 }
 
@@ -49,7 +51,6 @@ dependencies {
     implementation project(":app")
     implementation project(":core")
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }
 
 kapt {

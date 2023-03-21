@@ -10,6 +10,7 @@ apply from: '../shared_dependencies.gradle'
 android {
     compileSdk 32
     defaultConfig {
+        namespace 'com.rezaalamsyah.animenia'
         applicationId "com.rezaalamsyah.animenia"
         minSdk 21
         targetSdk 32
@@ -45,13 +46,13 @@ android {
         quiet true
         abortOnError false
         ignoreWarnings true
+        baseline file("lint-baseline.xml")
     }
 }
 
 dependencies {
     implementation project(":core")
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }
 
 kapt {

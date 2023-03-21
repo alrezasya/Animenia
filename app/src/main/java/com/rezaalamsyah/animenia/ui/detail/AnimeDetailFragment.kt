@@ -70,22 +70,21 @@ class AnimeDetailFragment : BaseFragment() {
         setFavorite(animeData?.isFavorite ?: false)
     }
 
-    private fun setFavorite(status: Boolean) {
-        if (status) {
-            binding.btnFav.setCompoundDrawablesWithIntrinsicBounds(
-                ResourcesCompat.getDrawable(requireContext().resources, R.drawable.ic_heart_like, null),
-                null,
-                null,
-                null
-            )
-        } else {
-            binding.btnFav.setCompoundDrawablesWithIntrinsicBounds(
-                ResourcesCompat.getDrawable(requireContext().resources, R.drawable.ic_heart_unlike, null),
-                null,
-                null,
-                null
-            )
-        }
+    @Suppress("unused")
+    private fun setFavorite(status: Boolean) = if (status) {
+        binding.btnFav.setCompoundDrawablesWithIntrinsicBounds(
+            ResourcesCompat.getDrawable(requireContext().resources, R.drawable.ic_heart_like, null),
+            null,
+            null,
+            null
+        )
+    } else {
+        binding.btnFav.setCompoundDrawablesWithIntrinsicBounds(
+            ResourcesCompat.getDrawable(requireContext().resources, R.drawable.ic_heart_unlike, null),
+            null,
+            null,
+            null
+        )
     }
 
     override fun onSetAction() {

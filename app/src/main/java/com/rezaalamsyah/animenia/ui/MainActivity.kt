@@ -7,7 +7,7 @@ import com.rezaalamsyah.animenia.databinding.ActivityMainBinding
 import com.rezaalamsyah.core.domain.model.Anime
 import com.rezaalamsyah.core.ui.base.BaseActivity
 import com.rezaalamsyah.core.utils.Variables
-
+@Suppress("unused")
 class MainActivity : BaseActivity() {
 
     private lateinit var binding: ActivityMainBinding

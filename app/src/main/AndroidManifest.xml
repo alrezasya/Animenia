@@ -16,7 +16,8 @@
             android:name=".ui.MainActivity"
             android:theme="@style/Theme.Design.NoActionBar"
             android:exported="true">
-            <intent-filter>
+            <intent-filter
+                android:exported="true">
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
                 <action android:name="android.intent.action.VIEW"/>

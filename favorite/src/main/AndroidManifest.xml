@@ -16,7 +16,8 @@
         <activity android:name=".ui.FavoriteActivity"
             android:theme="@style/Theme.Design.NoActionBar"
             android:exported="true">
-            <intent-filter>
+            <intent-filter
+                android:exported="true">
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <data

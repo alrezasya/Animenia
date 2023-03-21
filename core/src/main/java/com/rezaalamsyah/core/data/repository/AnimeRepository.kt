@@ -27,7 +27,8 @@ class AnimeRepository(
                 }
             }
 
-            override fun shouldFetch(data: List<Anime>?): Boolean = true
+            @Suppress("SameReturnValue")
+            override fun shouldFetch(@Suppress("unused") data: List<Anime>?): Boolean = true
 
             override suspend fun createCall(): Flow<ResponseState<List<AnimeResponse>?>> =
                 remoteDataSource.getAnimeList()

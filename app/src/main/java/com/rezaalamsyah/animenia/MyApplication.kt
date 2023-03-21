@@ -1,6 +1,6 @@
 package com.rezaalamsyah.animenia
 
-import android.app.Application
+import androidx.multidex.MultiDexApplication
 import com.rezaalamsyah.animenia.di.useCaseModule
 import com.rezaalamsyah.animenia.di.viewModelModule
 import com.rezaalamsyah.core.di.databaseModule
@@ -12,7 +12,7 @@ import org.koin.core.context.startKoin
 import org.koin.core.logger.Level
 import org.koin.dsl.module
 
-class MyApplication : Application() {
+class MyApplication : MultiDexApplication() {
     override fun onCreate() {
         super.onCreate()
         startKoin {

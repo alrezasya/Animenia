@@ -10,6 +10,7 @@ import com.rezaalamsyah.core.R
 import com.rezaalamsyah.core.databinding.ItemListAnimeBinding
 import com.rezaalamsyah.core.domain.model.Anime
 
+@Suppress("unused")
 class AnimeAdapter : RecyclerView.Adapter<AnimeAdapter.ViewHolder>() {
 
     private var listData = ArrayList<Anime>()
