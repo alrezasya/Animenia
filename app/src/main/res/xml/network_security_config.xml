@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true" />
+    <domain-config>
+        <domain includeSubdomains="true">api.jikan.moe</domain>
+        <pin-set>
+            <pin digest="SHA-256">OkKFoHjhk70gFgJbXL4o76+32oMbU9gjXDbyDfHGjLg=</pin>
+        </pin-set>
+    </domain-config>
+</network-security-config>

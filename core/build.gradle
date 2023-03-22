@@ -45,7 +45,6 @@ android {
         enable 'RtlHardcoded', 'RtlCompat', 'RtlEnabled'
         ignoreWarnings true
         quiet true
-        checkReleaseBuilds false
         baseline file("lint-baseline.xml")
     }
 }
@@ -59,8 +58,7 @@ dependencies {
 
     //retrofit
     api "com.squareup.retrofit2:retrofit:$retrofit_version"
-    api "com.squareup.retrofit2:converter-moshi:$moshi_converter_version"
-    api "com.squareup.moshi:moshi-kotlin:$moshi_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
     api "com.squareup.okhttp3:logging-interceptor:$logging_interceptor_version"
 
     //coroutine

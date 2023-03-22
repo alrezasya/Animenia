@@ -1,44 +1,49 @@
-##----------------------- Proguard config for Moshi  --------------------------
 
--dontwarn okio.**
--dontwarn javax.annotation.Nullable
--dontwarn javax.annotation.ParametersAreNonnullByDefault
-
--dontwarn javax.annotation.**
-
--keepclasseswithmembers class * {
-    @com.squareup.moshi.* <methods>;
+#### GLIDE #####
+-keep public class * implements com.bumptech.glide.module.GlideModule
+-keep class * extends com.bumptech.glide.module.AppGlideModule {
+ <init>(...);
+}
+-keep public enum com.bumptech.glide.load.ImageHeaderParser$** {
+  **[] $VALUES;
+  public *;
+}
+-keep class com.bumptech.glide.load.data.ParcelFileDescriptorRewinder$InternalRewinder {
+  *** rewind();
 }
 
-# Enum field names are used by the integrated EnumJsonAdapter.
-# values() is synthesized by the Kotlin compiler and is used by EnumJsonAdapter indirectly
-# Annotate enums with @JsonClass(generateAdapter = false) to use them with Moshi.
--keepclassmembers @com.squareup.moshi.JsonClass class * extends java.lang.Enum {
-    <fields>;
-    **[] values();
+
+##---------------Begin: proguard configuration for Gson  ----------
+# Gson uses generic type information stored in a class file when working with fields. Proguard
+# removes such information by default, so configure it to keep all of it.
+-keepattributes Signature
+
+# For using GSON @Expose annotation
+-keepattributes *Annotation*
+
+# Gson specific classes
+-dontwarn sun.misc.**
+#-keep class com.google.gson.stream.** { *; }
+
+# Application classes that will be serialized/deserialized over Gson
+-keep class com.google.gson.examples.android.model.** { <fields>; }
+
+# Prevent proguard from stripping interface information from TypeAdapter, TypeAdapterFactory,
+# JsonSerializer, JsonDeserializer instances (so they can be used in @JsonAdapter)
+-keep class * extends com.google.gson.TypeAdapter
+-keep class * implements com.google.gson.TypeAdapterFactory
+-keep class * implements com.google.gson.JsonSerializer
+-keep class * implements com.google.gson.JsonDeserializer
+
+# Prevent R8 from leaving Data object members always null
+-keepclassmembers,allowobfuscation class * {
+  @com.google.gson.annotations.SerializedName <fields>;
 }
 
-# Keep helper method to avoid R8 optimisation that would keep all Kotlin Metadata when unwanted
--keepclassmembers class com.squareup.moshi.internal.Util {
-    private static java.lang.String getKotlinMetadataClassName();
-}
+# Uncomment for DexGuard only
+#-keepresourcexmlelements manifest/application/meta-data@value=GlideModule
 
-# Keep ToJson/FromJson-annotated methods
--keepclassmembers class * {
-  @com.squareup.moshi.FromJson <methods>;
-  @com.squareup.moshi.ToJson <methods>;
-}
-
-##----------------------- End of Proguard config for Moshi  -------------------
-
-##----------------------- Proguard config for SqlChiper  --------------------------
-
--keep,includedescriptorclasses class net.sqlcipher.** { *; }
--keep,includedescriptorclasses interface net.sqlcipher.** { *; }
-
-##----------------------- End of Proguard config for SqlChiper  -------------------
-
-##----------------------- Proguard config for Retrofit  --------------------------
+#---------------Begin: proguard configuration for Retrofit  ----------
 # Retrofit does reflection on generic parameters. InnerClasses is required to use Signature and
 # EnclosingMethod is required to use InnerClasses.
 -keepattributes Signature, InnerClasses, EnclosingMethod
@@ -71,41 +76,11 @@
 
 -dontwarn kotlinx.**
 
--dontwarn org.bouncycastle.jsse.BCSSLSocket
--dontwarn org.bouncycastle.jsse.BCSSLParameters
--dontwarn org.bouncycastle.jsse.provider.BouncyCastleJsseProvider
--dontwarn org.conscrypt.*
--dontwarn org.openjsse.javax.net.ssl.SSLParameters
--dontwarn org.openjsse.javax.net.ssl.SSLSocket
--dontwarn org.openjsse.net.ssl.OpenJSSE
-##----------------------- End of Proguard config for Retrofit  -------------------
+#### SQL CHIPER #####
 
-##----------------------- Proguard config for Glide  --------------------------
+-keep,includedescriptorclasses class net.sqlcipher.** { *; }
+-keep,includedescriptorclasses interface net.sqlcipher.** { *; }
 
--keep public class * implements com.bumptech.glide.module.GlideModule
--keep class * extends com.bumptech.glide.module.AppGlideModule {
- <init>(...);
-}
--keep public enum com.bumptech.glide.load.ImageHeaderParser$** {
-  **[] $VALUES;
-  public *;
-}
--keep class com.bumptech.glide.load.data.ParcelFileDescriptorRewinder$InternalRewinder {
-  *** rewind();
-}
-
-##----------------------- End of Proguard config for Glide  -------------------
-
-##----------------------- Proguard config for Kotlin  --------------------------
-
--dontwarn java.util.concurrent.Flow*
--keep public class kotlin.reflect.jvm.internal.impl.builtins.* { public *; }
--keep interface kotlin.reflect.jvm.internal.impl.builtins.BuiltInsLoader
--keep class kotlin.reflect.jvm.internal.impl.serialization.deserialization.builtins.BuiltInsLoaderImpl
--keep class kotlin.Metadata {
-    *;
-}-keep class kotlin.reflect.jvm.internal.impl.load.java.FieldOverridabilityCondition
--keep class kotlin.reflect.jvm.internal.impl.load.java.ErasedOverridabilityCondition
--keep class kotlin.reflect.jvm.internal.impl.load.java.JavaIncompatibilityRulesOverridabilityCondition
-
-##----------------------- End of Proguard config for Kotlin  -------------------
+-dontwarn org.conscrypt.**
+-dontwarn org.bouncycastle.**
+-dontwarn org.openjsse.**

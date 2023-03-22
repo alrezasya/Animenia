@@ -1,67 +1,64 @@
 package com.rezaalamsyah.core.data.source.remote.response
 
+import com.google.gson.annotations.SerializedName
 import com.rezaalamsyah.core.domain.model.AnimeImage
 import com.rezaalamsyah.core.domain.model.ImageDetail
-import com.squareup.moshi.Json
-import com.squareup.moshi.JsonClass
+
 @Suppress("unused")
-@JsonClass(generateAdapter = true)
 data class ListAnimeResponse(
-    @Json(name = "data")
+    @field:SerializedName( "data")
     val listData: List<AnimeResponse>? = null
 )
 
 @Suppress("unused")
-@JsonClass(generateAdapter = true)
 data class AnimeResponse(
-    @Json(name ="mal_id")
+    @field:SerializedName("mal_id")
     val id: Int,
 
-    @Json(name ="images")
+    @field:SerializedName("images")
     val image: AnimeImageData? = null,
 
-    @Json(name ="title")
+    @field:SerializedName("title")
     val title: String? = null,
 
-    @Json(name ="type")
+    @field:SerializedName("type")
     val type: String? = null,
 
-    @Json(name ="source")
+    @field:SerializedName("source")
     val source: String? = null,
 
-    @Json(name ="episodes")
+    @field:SerializedName("episodes")
     val episodes: Int? = null,
 
-    @Json(name ="status")
+    @field:SerializedName("status")
     val status: String? = null,
 
-    @Json(name ="airing")
+    @field:SerializedName("airing")
     val airing: Boolean? = null,
 
-    @Json(name ="duration")
+    @field:SerializedName("duration")
     val duration: String? = null,
 
-    @Json(name ="rating")
+    @field:SerializedName("rating")
     val rating: String? = null,
 
-    @Json(name ="score")
+    @field:SerializedName("score")
     val score: Double? = null,
 
-    @Json(name ="scored_by")
+    @field:SerializedName("scored_by")
     val scoredBy: Int? = null,
 
-    @Json(name ="synopsis")
+    @field:SerializedName("synopsis")
     val synopsis: String? = null,
 
 )
 
 @Suppress("unused")
-@JsonClass(generateAdapter = true)
 data class AnimeImageData(
-    @Json(name ="jpg")
+    @field:SerializedName("jpg")
     val jpg: ImageDetailData? = null,
 
-    @Json(name ="webp")
+    @field:SerializedName("webp")
     val webp: ImageDetailData? = null,
 ) {
     fun toAnimeImage(): AnimeImage {
@@ -73,15 +70,14 @@ data class AnimeImageData(
 }
 
 @Suppress("unused")
-@JsonClass(generateAdapter = true)
 data class ImageDetailData(
-    @Json(name ="image_url")
+    @field:SerializedName("image_url")
     val imageUrl: String? = null,
 
-    @Json(name ="small_image_url")
+    @field:SerializedName("small_image_url")
     val smallImageUrl: String? = null,
 
-    @Json(name ="large_image_url")
+    @field:SerializedName("large_image_url")
     val largeImageUrl: String? = null,
 ) {
     fun toImageDetail() : ImageDetail {
