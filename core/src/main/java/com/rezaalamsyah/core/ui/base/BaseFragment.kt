@@ -21,9 +21,16 @@ abstract class BaseFragment : Fragment(), NavDelegate by NavDelegation(), IBaseV
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        onSetView()
-        onSetAction()
-        onSetObserver()
+        if (activity!=null) {
+            onSetView()
+            onSetAction()
+            onSetObserver()
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        currentActivity.setSupportActionBar(null)
     }
 
     override fun setToolbar(

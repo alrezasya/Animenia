@@ -126,6 +126,7 @@ class HomeFragment : BaseFragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+        binding.rvAnime.adapter = null
         _binding = null
     }
 }
