@@ -14,25 +14,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/img_reload"
-        android:layout_marginTop="@dimen/dimen_16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/img_no_data"
-        app:layout_constraintBottom_toTopOf="@id/tv_error"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:src="@drawable/ic_reload"
-        android:layout_width="@dimen/dimen_30dp"
-        android:layout_height="@dimen/dimen_30dp"/>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_error"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/img_reload"
+        app:layout_constraintTop_toBottomOf="@id/img_no_data"
         android:layout_marginTop="@dimen/dimen_8dp"
         android:textSize="@dimen/text_dimen_20sp"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:text="@string/text_error"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>

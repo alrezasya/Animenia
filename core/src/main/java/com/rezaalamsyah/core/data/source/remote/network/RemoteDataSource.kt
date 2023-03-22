@@ -14,7 +14,7 @@ class RemoteDataSource (@Suppress("unused") private val apiClient: ApiClient) {
                 val response = apiClient.getTopAnimeList()
                 val data = response.listData
                 if (data?.isNotEmpty() == true){
-                    emit(ResponseState.Success(response.listData))
+                    emit(ResponseState.Success(data))
                 } else {
                     emit(ResponseState.Empty)
                 }

@@ -81,7 +81,6 @@ class FavoriteActivity: BaseActivity() {
         binding.apply {
             rvAnime.gone()
             binding.viewError.root.visible()
-            binding.viewError.imgReload.gone()
             binding.viewError.tvError.text = getString(R.string.text_no_data)
         }
     }
